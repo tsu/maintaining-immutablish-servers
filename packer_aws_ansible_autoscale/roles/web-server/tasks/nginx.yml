@@ -1,0 +1,7 @@
+- name: install nginx
+  apt: pkg=nginx state=latest
+
+- name: copy nginx configuration
+  copy: src=nginx.conf dest=/etc/nginx/nginx.conf
+  notify:
+  - restart nginx

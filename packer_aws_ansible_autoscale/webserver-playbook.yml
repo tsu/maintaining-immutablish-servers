@@ -1,0 +1,8 @@
+---
+- name: Provision a optimus webserver
+  gather_facts: no
+  hosts: localhost
+  sudo: true
+  roles:
+  - core-server
+  - web-server

@@ -1,0 +1,6 @@
+---
+- name: Set soft limit for number of open files
+  lineinfile: dest=/etc/security/limits.conf line="* soft nofile 65535"
+
+- name: Set hard limit for number of open files
+  lineinfile: dest=/etc/security/limits.conf line="* hard nofile 65535"

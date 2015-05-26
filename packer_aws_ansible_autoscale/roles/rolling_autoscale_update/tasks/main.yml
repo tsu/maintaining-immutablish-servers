@@ -1,0 +1,33 @@
+---
+- name: create a load balancer
+  ec2_elb_lb:
+    name: "{{ load_balancer_name }}"
+    state: present
+    region: "{{ region }}"
+    zones: "{{ zones }}"
+    listeners:
+      - protocol: http
+        load_balancer_port: 80
+        instance_port: 80
+
+- name: create a launch configuration
+  ec2_lc:
+    name: "{{ launch_configuration_name }}"
+    image_id: "{{ ami_id }}"
+    key_name: "{{ key_name }}"
+    region: "{{ region }}"
+    security_groups: "{{ security_group_id }}"
+    instance_type: "{{ instance_type }}"
+
+- name: create or modify an existing autoscaling group
+  ec2_asg:
+    name: "{{ auto_scale_group_name }}"
+    launch_config_name: "{{ launch_configuration_name }}"
+    health_check_period: 60
+    health_check_type: ELB
+    replace_all_instances: yes
+    min_size: "{{ auto_scale_group_min_size }}"
+    max_size: "{{ auto_scale_group_max_size }}"
+    desired_capacity: "{{ auto_scale_group_desired_capacity }}"
+    region: "{{ region }}"
+    load_balancers: "{{ load_balancer_name }}"

@@ -1,0 +1,9 @@
+---
+- name: Rolling autoscale update
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_prompt:
+    ami_id: "Plz provide ami id"
+  roles:
+  - rolling_autoscale_update
