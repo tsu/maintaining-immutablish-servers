@@ -1,0 +1,16 @@
+---
+- name: create instances
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  roles:
+  - create-instance
+
+- name: provision instances
+  hosts: web_servers
+  remote_user: ubuntu
+  gather_facts: no
+  sudo: yes
+  roles:
+  - core-server
+  - web-server

@@ -1,0 +1,10 @@
+---
+region: "eu-west-1"
+security_group_name: "immutablish-security-group"
+security_group_description: "Open ports 22 and 80 to the world"
+ssh_key_name: "immutablish-servers"
+ssh_key_private: "~/.ssh/keys/{{ ssh_key_name }}"
+instance_type: "t1.micro"
+image: "ami-f1810f86"
+instance_tags:
+  Name: "Immutablish Web Server"

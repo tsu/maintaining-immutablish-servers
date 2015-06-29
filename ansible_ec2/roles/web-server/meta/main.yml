@@ -1,0 +1,11 @@
+---
+galaxy_info:
+  author: timo.suomela@reaktor.fi
+  description: Finatra server role
+  license: proprietary
+  min_ansible_version: 1.2
+  platforms:
+  - name: Ubuntu
+    versions:
+    - lucid
+dependencies: []
