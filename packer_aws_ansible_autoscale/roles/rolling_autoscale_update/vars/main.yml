@@ -1,15 +1,16 @@
 ---
-region: eu-west-1
+region: "eu-west-1"
 zones:
   - eu-west-1a
   - eu-west-1b
   - eu-west-1c
-instance_type: t1.micro
-key_name: immutablish_servers
-security_group_id: sg-3b1a345e
+instance_type: "t1.micro"
+key_name: "immutablish-servers"
+security_group_name: "immutablish-security-group"
+security_group_description: "Open ports 22 and 80 to the world"
 launch_configuration_name: "{{ ami_id }}_lc"
-auto_scale_group_name: immutablish-webserver-asg
+auto_scale_group_name: "immutablish-webserver-asg"
 auto_scale_group_min_size: 2
 auto_scale_group_max_size: 6
 auto_scale_group_desired_capacity: 3
-load_balancer_name: immutablish-balancer
+load_balancer_name: "immutablish-balancer"
